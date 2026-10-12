@@ -1,0 +1,38 @@
+# keep the build context small — these are rebuilt inside the image anyway
+**/node_modules
+**/dist
+**/build
+**/coverage
+**/.cache
+
+# secrets / local-only
+**/.env
+**/.env.*
+!**/.env.example
+
+# VCS / IDE / OS noise
+.git
+.github
+.gitignore
+.gitattributes
+.vscode
+.idea
+.DS_Store
+Thumbs.db
+
+# logs and temp
+**/*.log
+tmp/
+temp/
+
+# big/irrelevant top-level folders
+tools/
+docs/
+README.md
+CHANGELOG.md
+SECURITY_OVERVIEW.md
+
+# docker artifacts don't need to be inside the context
+Dockerfile
+docker-compose.yml
+.dockerignore

@@ -1,0 +1,151 @@
+/**
+ * Responsive design utility classes and media query helpers.
+ * Breakpoints: mobile (<640px), tablet (640-1024px), desktop (>1024px).
+ * Used alongside component-level CSS Modules for layout adaptation.
+ */
+
+/* ==================== BREAKPOINT VARIABLES ==================== */
+/* referenced in comments; actual values used in media queries below */
+/* mobile:  < 640px  */
+/* tablet:  640px - 1024px */
+/* desktop: > 1024px */
+
+/* ==================== VISIBILITY UTILITIES ==================== */
+
+/* hide on mobile, show on tablet+ */
+.hide-mobile {
+  display: none !important;
+}
+
+@media (min-width: 640px) {
+  .hide-mobile {
+    display: revert !important;
+  }
+}
+
+/* show on mobile only, hide on tablet+ */
+.show-mobile-only {
+  display: revert !important;
+}
+
+@media (min-width: 640px) {
+  .show-mobile-only {
+    display: none !important;
+  }
+}
+
+/* hide on desktop, show on mobile/tablet */
+.hide-desktop {
+  display: revert !important;
+}
+
+@media (min-width: 1024px) {
+  .hide-desktop {
+    display: none !important;
+  }
+}
+
+/* ==================== RESPONSIVE GRID ==================== */
+
+.responsive-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-md);
+}
+
+@media (min-width: 640px) {
+  .responsive-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .responsive-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-lg);
+  }
+}
+
+/* ==================== RESPONSIVE CONTAINERS ==================== */
+
+.container {
+  width: 100%;
+  padding: 0 var(--space-md);
+  margin: 0 auto;
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding: 0 var(--space-lg);
+    max-width: 640px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: var(--content-max-width);
+    padding: 0 var(--space-xl);
+  }
+}
+
+/* ==================== MOBILE STACK ==================== */
+/* converts flex rows to columns on mobile */
+
+.mobile-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+@media (min-width: 640px) {
+  .mobile-stack {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+/* ==================== RESPONSIVE TEXT ==================== */
+
+.responsive-title {
+  font-size: 20px;
+  font-weight: var(--font-weight-bold);
+}
+
+@media (min-width: 640px) {
+  .responsive-title {
+    font-size: 24px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .responsive-title {
+    font-size: var(--font-size-h1);
+  }
+}
+
+/* ==================== RESPONSIVE PADDING ==================== */
+
+.responsive-padding {
+  padding: var(--space-md);
+}
+
+@media (min-width: 640px) {
+  .responsive-padding {
+    padding: var(--space-lg);
+  }
+}
+
+@media (min-width: 1024px) {
+  .responsive-padding {
+    padding: var(--space-xl);
+  }
+}
+
+/* ==================== MOBILE FULL WIDTH ==================== */
+/* makes elements full-width only on mobile */
+
+@media (max-width: 639px) {
+  .mobile-full {
+    width: 100% !important;
+  }
+}

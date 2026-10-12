@@ -1,0 +1,144 @@
+/**
+ * Button — typewriter / minimalist monochrome.
+ *
+ * Primary buttons sit on a 2px black "shadow" that collapses on press,
+ * giving every click a satisfying mechanical key-press response.
+ * No gradients, no rounded corners, no colour beyond black/white/red.
+ */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  border-radius: 0;
+  font-family: var(--font-mono);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-wide);
+  line-height: 1;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1px solid #000000;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast),
+              background var(--transition-fast), color var(--transition-fast);
+  /* every button has the offset shadow by default — it's the look */
+  box-shadow: 3px 3px 0 #000000;
+  white-space: nowrap;
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+  transform: none !important;
+  box-shadow: 3px 3px 0 #000000 !important;
+}
+
+/* press animation — shadow shrinks, button "lands" against the page */
+.button:not(:disabled):active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 #000000;
+}
+
+/* ==================== SIZES ==================== */
+
+.sm  { font-size: 11px; padding: 6px 12px;  min-height: 30px; }
+.md  { font-size: 12px; padding: 9px 18px;  min-height: 38px; }
+.lg  { font-size: 13px; padding: 12px 26px; min-height: 46px; }
+
+/* ==================== VARIANTS ==================== */
+
+/* primary — filled black, white text, the headline CTA */
+.primary {
+  background-color: #000000;
+  color: #FFFFFF;
+  border-color: #000000;
+}
+.primary:not(:disabled):hover {
+  background-color: #000000;
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 #000000;
+}
+
+/* secondary — white fill, black border, black text */
+.secondary {
+  background-color: #FFFFFF;
+  color: #000000;
+  border-color: #000000;
+}
+.secondary:not(:disabled):hover {
+  background-color: #F4F4F4;
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 #000000;
+}
+
+/* danger — the only allowed accent: a single warm red */
+.danger {
+  background-color: #B91C1C;
+  color: #FFFFFF;
+  border-color: #000000;
+  box-shadow: 3px 3px 0 #000000;
+}
+.danger:not(:disabled):hover {
+  background-color: #991717;
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 #000000;
+}
+
+/* ghost — text-only, no border, no shadow. Used for secondary actions. */
+.ghost {
+  background-color: transparent;
+  color: #000000;
+  border-color: transparent;
+  box-shadow: none;
+  text-transform: none;
+  letter-spacing: 0;
+}
+.ghost:not(:disabled):hover {
+  background-color: #F4F4F4;
+  box-shadow: none;
+  transform: none;
+}
+.ghost:disabled {
+  box-shadow: none !important;
+}
+
+/* outline — same as secondary but no fill, no shadow on rest */
+.outline {
+  background-color: transparent;
+  color: #000000;
+  border-color: #000000;
+  box-shadow: none;
+}
+.outline:not(:disabled):hover {
+  background-color: #000000;
+  color: #FFFFFF;
+  box-shadow: 3px 3px 0 #000000;
+  transform: translate(-1px, -1px);
+}
+
+/* ==================== STATES ==================== */
+
+.fullWidth { width: 100%; }
+
+.loadingSpinner {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+}
+
+.spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid currentColor;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+.iconLeft  { display: flex; align-items: center; flex-shrink: 0; }
+.iconRight { display: flex; align-items: center; flex-shrink: 0; }

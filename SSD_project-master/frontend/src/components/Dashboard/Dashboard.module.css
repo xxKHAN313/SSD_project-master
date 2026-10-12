@@ -1,0 +1,485 @@
+/**
+ * Dashboard page styles — used by Employee, Manager, and Admin dashboards.
+ * Follows the design system variables defined in variables.css.
+ */
+
+/* ==================== WELCOME SECTION ==================== */
+
+.welcomeSection {
+  background: #000000;
+  border: 1px solid #000000;
+  border-radius: 0;
+  padding: var(--space-xl);
+  color: #FFFFFF;
+  margin-bottom: var(--space-xl);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 6px 6px 0 #000000;
+  font-family: var(--font-mono);
+}
+
+/* corner ASCII-style ornament */
+.welcomeSection::before {
+  content: '+';
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  color: #FFFFFF;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  opacity: 0.4;
+}
+
+.welcomeSection::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 60%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.welcomeTitle {
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--space-xs);
+  position: relative;
+  z-index: 1;
+}
+
+.welcomeSubtitle {
+  font-size: var(--font-size-md);
+  opacity: 0.85;
+  position: relative;
+  z-index: 1;
+}
+
+.welcomeMeta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-top: var(--space-md);
+  font-size: var(--font-size-sm);
+  opacity: 0.8;
+  position: relative;
+  z-index: 1;
+}
+
+/* ==================== SECTION HEADERS ==================== */
+
+.sectionTitle {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-md);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.sectionTitle svg {
+  color: var(--color-primary);
+}
+
+/* ==================== STAT CARDS GRID ==================== */
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+
+/* tablet: 2-column grid */
+@media (max-width: 900px) {
+  .statsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* mobile: single column */
+@media (max-width: 560px) {
+  .statsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==================== STAT CARD ==================== */
+
+.statCard {
+  background: #FFFFFF;
+  border: 1px solid #000000;
+  border-radius: 0;
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  transition: box-shadow var(--transition-fast), transform var(--transition-fast);
+  cursor: default;
+  font-family: var(--font-mono);
+  box-shadow: 3px 3px 0 #000000;
+}
+
+.statCard:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0 #000000;
+}
+
+.statCardIcon {
+  width: 36px;
+  height: 36px;
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000000;
+  color: #FFFFFF;
+}
+
+/* all icon-tint variants now resolve to the same black-on-white square —
+   colour categories are conveyed by the icon glyph and label, not hue */
+.statCardIconBlue,
+.statCardIconGreen,
+.statCardIconAmber,
+.statCardIconRed,
+.statCardIconPurple {
+  background: #000000;
+  color: #FFFFFF;
+}
+
+.statCardValue {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  line-height: 1.2;
+}
+
+.statCardLabel {
+  font-size: var(--font-size-md);
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-medium);
+}
+
+.statCardBadge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  background: var(--color-error);
+  color: #ffffff;
+  width: fit-content;
+}
+
+/* ==================== QUICK LINKS ==================== */
+
+.quickLinksGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+
+.quickLink {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-lg);
+  background: #FFFFFF;
+  border: 1px solid #000000;
+  border-radius: 0;
+  text-decoration: none;
+  color: #000000;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast),
+              background var(--transition-fast), color var(--transition-fast);
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 3px 3px 0 #000000;
+}
+
+.quickLink:hover {
+  background: #000000;
+  color: #FFFFFF;
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0 #000000;
+}
+
+.quickLink:hover .quickLinkIcon {
+  background: #FFFFFF;
+  color: #000000;
+}
+
+.quickLinkIcon {
+  width: 36px;
+  height: 36px;
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000000;
+  color: #FFFFFF;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+/* ==================== RECENT MESSAGES SECTION ==================== */
+
+.recentSection {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin-bottom: var(--space-xl);
+}
+
+.recentSectionHeader {
+  padding: var(--space-md) var(--space-lg);
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.recentSectionTitle {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+}
+
+.recentSectionLink {
+  font-size: var(--font-size-sm);
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: var(--font-weight-medium);
+}
+
+.recentSectionLink:hover {
+  text-decoration: underline;
+}
+
+.recentMessageItem {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-md);
+  padding: var(--space-md) var(--space-lg);
+  border-bottom: 1px solid var(--color-border);
+  transition: background var(--transition-fast);
+}
+
+.recentMessageItem:last-child {
+  border-bottom: none;
+}
+
+.recentMessageItem:hover {
+  background: var(--color-bg-hover);
+}
+
+.recentMessageAvatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  color: #ffffff;
+  flex-shrink: 0;
+}
+
+.recentMessageContent {
+  flex: 1;
+  min-width: 0;
+}
+
+.recentMessageMeta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: 2px;
+}
+
+.recentMessageSender {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+}
+
+.recentMessageRoom {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+.recentMessageTime {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+.recentMessageText {
+  font-size: var(--font-size-md);
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-2xl) var(--space-lg);
+  color: var(--color-text-muted);
+  gap: var(--space-sm);
+  text-align: center;
+}
+
+.emptyStateIcon {
+  font-size: 32px;
+}
+
+/* ==================== AUDIT LOGS TABLE ==================== */
+
+.auditTable {
+  width: 100%;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.auditTableHeader {
+  padding: var(--space-md) var(--space-lg);
+  border-bottom: 1px solid var(--color-border);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+}
+
+.auditTableRow {
+  display: grid;
+  grid-template-columns: 2fr 1.5fr 2fr 1fr 1.5fr;
+  gap: var(--space-md);
+  padding: var(--space-md) var(--space-lg);
+  align-items: center;
+  border-bottom: 1px solid var(--color-border);
+  font-size: var(--font-size-sm);
+}
+
+.auditTableRow:last-child {
+  border-bottom: none;
+}
+
+.auditTableRow:hover {
+  background: var(--color-bg-hover);
+}
+
+.auditTableHeadRow {
+  background: var(--color-bg-main);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+}
+
+/* ==================== SEVERITY BADGES ==================== */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 10px;
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  white-space: nowrap;
+}
+
+.badgeInfo {
+  background: var(--color-info-light);
+  color: #0369A1;
+}
+
+.badgeWarning {
+  background: var(--color-warning-light);
+  color: #92400E;
+}
+
+.badgeCritical {
+  background: var(--color-error-light);
+  color: #991B1B;
+}
+
+.badgeSuccess {
+  background: var(--color-success-light);
+  color: #065F46;
+}
+
+/* ==================== SYSTEM HEALTH CARDS ==================== */
+
+.healthGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: var(--space-md);
+}
+
+.healthItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-md);
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.healthDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.healthDotOnline {
+  background: var(--color-success);
+  box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.2);
+}
+
+.healthDotOffline {
+  background: var(--color-error);
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2);
+}
+
+.healthLabel {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.healthStatus {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-success);
+  margin-left: auto;
+}
+
+/* ==================== LOADING STATE ==================== */
+
+.skeletonLine {
+  height: 16px;
+  border-radius: var(--radius-sm);
+  background: linear-gradient(90deg, var(--color-border) 25%, var(--color-bg-hover) 50%, var(--color-border) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}

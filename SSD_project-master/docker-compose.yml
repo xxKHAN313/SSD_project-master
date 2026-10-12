@@ -1,0 +1,65 @@
+# Shield-Chat — local / LAN deployment stack.
+#
+# Common commands:
+#   docker compose up -d --build              # start (or rebuild & start) the app
+#   docker compose logs -f app                # tail application logs
+#   docker compose ps                         # see container status + health
+#   docker compose down                       # stop & remove containers
+#   docker compose restart app                # quick restart without rebuild
+#
+# Public URL (optional):
+#   docker compose --profile tunnel up -d     # also start the serveo ssh tunnel
+#   docker compose logs -f tunnel             # read the assigned https URL
+#
+# Environment variables are read from ./backend/.env at runtime — they are
+# NOT baked into the image, so rotating secrets only needs a `docker compose up -d`.
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: shield-chat:latest
+    container_name: shield-chat
+    restart: unless-stopped
+    env_file:
+      - ./backend/.env
+    environment:
+      NODE_ENV: production
+      PORT: "5000"
+      HOST: 0.0.0.0
+    ports:
+      - "5000:5000"
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:5000/api/health"]
+      interval: 30s
+      timeout: 5s
+      start_period: 20s
+      retries: 5
+
+  # Optional public-URL sidecar. Only starts when you pass --profile tunnel.
+  # Uses serveo.net so no signup or binary download is needed — the URL is
+  # printed in the container's logs and changes on every reconnect.
+  tunnel:
+    profiles: ["tunnel"]
+    image: alpine:3.20
+    container_name: shield-chat-tunnel
+    restart: unless-stopped
+    depends_on:
+      app:
+        condition: service_healthy
+    command:
+      - sh
+      - -c
+      - |
+        apk add --no-cache openssh-client >/dev/null
+        echo "[tunnel] starting serveo SSH reverse tunnel to app:5000"
+        while true; do
+          ssh -o StrictHostKeyChecking=no \
+              -o UserKnownHostsFile=/dev/null \
+              -o ExitOnForwardFailure=yes \
+              -o ServerAliveInterval=30 \
+              -N -R 80:app:5000 serveo.net
+          echo "[tunnel] disconnected — reconnecting in 5s"
+          sleep 5
+        done

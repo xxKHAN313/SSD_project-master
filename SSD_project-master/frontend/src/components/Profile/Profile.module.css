@@ -1,0 +1,185 @@
+/**
+ * Profile page styles.
+ * Uses the same design tokens as the dashboard (variables.css).
+ */
+
+/* ==================== HEADER BANNER ==================== */
+
+.profileHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xl);
+  background: #000000;
+  border: 1px solid #000000;
+  border-radius: 0;
+  padding: var(--space-xl);
+  color: #FFFFFF;
+  margin-bottom: var(--space-xl);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 6px 6px 0 #000000;
+  font-family: var(--font-mono);
+}
+
+.profileHeader::before {
+  content: '+';
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  color: #FFFFFF;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.profileAvatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 28px;
+  font-weight: 700;
+  color: #000000;
+  background: #FFFFFF;
+  flex-shrink: 0;
+  border: 2px solid #FFFFFF;
+  position: relative;
+  z-index: 1;
+}
+
+.profileHeaderInfo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  position: relative;
+  z-index: 1;
+}
+
+.profileName {
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-bold);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.profileRoleRow {
+  display: flex;
+  gap: var(--space-xs);
+  flex-wrap: wrap;
+}
+
+.profileSubtitle {
+  font-size: var(--font-size-base);
+  opacity: 0.85;
+  margin: 0;
+  margin-top: var(--space-xs);
+}
+
+/* ==================== BADGES ==================== */
+
+.roleBadge,
+.statusBadge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.role_admin {
+  background: rgba(239, 68, 68, 0.18);
+  color: #FEE2E2;
+  border: 1px solid rgba(254, 202, 202, 0.35);
+}
+
+.role_manager {
+  background: rgba(245, 158, 11, 0.2);
+  color: #FEF3C7;
+  border: 1px solid rgba(253, 230, 138, 0.35);
+}
+
+.role_employee {
+  background: rgba(16, 185, 129, 0.2);
+  color: #D1FAE5;
+  border: 1px solid rgba(167, 243, 208, 0.35);
+}
+
+.statusActive {
+  background: rgba(16, 185, 129, 0.2);
+  color: #D1FAE5;
+  border: 1px solid rgba(167, 243, 208, 0.35);
+}
+
+.statusInactive {
+  background: rgba(107, 114, 128, 0.25);
+  color: #E5E7EB;
+  border: 1px solid rgba(229, 231, 235, 0.3);
+}
+
+/* ==================== INFO CARD ==================== */
+
+.infoCard {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  margin-bottom: var(--space-xl);
+  box-shadow: var(--shadow-sm);
+}
+
+.infoGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--space-lg);
+}
+
+.infoRow {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xxs);
+  min-width: 0;
+}
+
+.infoLabel {
+  font-size: 12px;
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.infoValue {
+  font-size: var(--font-size-base);
+  color: var(--color-text-primary);
+  word-break: break-word;
+  line-height: 1.4;
+}
+
+/* ==================== FORM HINT ==================== */
+
+.formHint {
+  font-size: 13px;
+  color: var(--color-text-muted);
+  margin: 0 0 var(--space-sm) 0;
+  line-height: 1.5;
+}
+
+/* ==================== MOBILE ==================== */
+
+@media (max-width: 640px) {
+  .profileHeader {
+    flex-direction: column;
+    text-align: center;
+    gap: var(--space-md);
+  }
+  .profileHeaderInfo {
+    align-items: center;
+  }
+}

@@ -1,0 +1,239 @@
+/**
+ * Global base styles and CSS reset.
+ * Applied to the entire application. Imports design variables first.
+ */
+
+/* Typewriter look using only system-available monospace fonts —
+   no external font load (which the CSP would block, and which would
+   delay first paint). The fallback chain in --font-family hits a real
+   monospace on every modern OS. */
+
+@import './variables.css';
+@import './animations.css';
+
+/* ==================== RESET ==================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ==================== ROOT & HTML ==================== */
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-family);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-body);
+  letter-spacing: var(--letter-spacing-normal);
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-main);
+  /* faint diagonal hairline grid — gives the typewriter page a "paper" feel
+     without screaming. Uncomment if you want it back; left out for purity. */
+  /* background-image: linear-gradient(0deg, transparent 23px, rgba(0,0,0,0.03) 24px), linear-gradient(90deg, transparent 23px, rgba(0,0,0,0.03) 24px); background-size: 24px 24px; */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+}
+
+/* terminal-style blinking caret you can tag onto any element */
+.caret::after {
+  content: '_';
+  display: inline-block;
+  margin-left: 4px;
+  animation: caret-blink 1s steps(1) infinite;
+  font-weight: 700;
+}
+
+/* a subtle typewriter underline (used on h1 in landing/auth pages) */
+.typed::after {
+  content: '';
+  display: inline-block;
+  width: 0.55em;
+  height: 0.05em;
+  background: currentColor;
+  vertical-align: baseline;
+  margin-left: 6px;
+  animation: caret-blink 0.9s steps(1) infinite;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ==================== TYPOGRAPHY ==================== */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family);
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+h1 {
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-h1);
+}
+
+h2 {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-h2);
+}
+
+h3 {
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-h3);
+}
+
+h4 {
+  font-size: var(--font-size-h4);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-h4);
+}
+
+p {
+  margin: 0;
+  line-height: var(--line-height-body);
+}
+
+a {
+  color: var(--color-text-link);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--color-primary-hover);
+  text-decoration: underline;
+}
+
+/* ==================== LISTS ==================== */
+
+ul, ol {
+  list-style: none;
+}
+
+/* ==================== MEDIA ==================== */
+
+img, svg, video {
+  display: block;
+  max-width: 100%;
+}
+
+/* ==================== FORMS ==================== */
+
+input, textarea, select, button {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* ==================== SCROLLBAR STYLING ==================== */
+
+/* custom scrollbar for webkit browsers (chrome, edge, safari) */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-main);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border-strong);
+  border-radius: var(--radius-full);
+  transition: background var(--transition-fast);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-muted);
+}
+
+/* firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border-strong) var(--color-bg-main);
+}
+
+/* ==================== FOCUS STYLES ==================== */
+
+/* visible focus for keyboard navigation accessibility */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: var(--radius-xs);
+}
+
+/* remove focus outline for mouse users while preserving for keyboard */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* ==================== SELECTION ==================== */
+
+/* invert selection — black text on white becomes white text on black */
+::selection {
+  background-color: #000000;
+  color: #FFFFFF;
+}
+
+/* ==================== UTILITY CLASSES ==================== */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.text-center { text-align: center; }
+.text-right  { text-align: right; }
+.text-left   { text-align: left; }
+
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.gap-sm { gap: var(--space-sm); }
+.gap-md { gap: var(--space-md); }
+
+.w-full { width: 100%; }
+.h-full { height: 100%; }

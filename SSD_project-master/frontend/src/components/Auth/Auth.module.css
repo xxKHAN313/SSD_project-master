@@ -1,0 +1,255 @@
+/**
+ * Auth pages — typewriter / monochrome.
+ * Login, Register, ForgotPassword, PasswordReset all share these styles.
+ */
+
+/* ==================== FORM COMMON ==================== */
+
+.authForm {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.authFormTitle {
+  font-family: var(--font-mono);
+  font-size: 22px;
+  font-weight: 700;
+  color: #000000;
+  margin-bottom: 4px;
+  letter-spacing: -0.02em;
+  /* a tiny "_" caret on the title — typewriter still has a cursor */
+  display: flex;
+  align-items: baseline;
+}
+
+.authFormTitle::after {
+  content: '_';
+  display: inline-block;
+  margin-left: 4px;
+  color: #000000;
+  animation: caret-blink 1s steps(1) infinite;
+}
+
+.authFormSubtitle {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: #4A4A4A;
+  margin-bottom: var(--space-md);
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+}
+
+/* error alert banner — black border + red foreground */
+.errorAlert {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  padding: 10px 12px;
+  background: #FFFFFF;
+  border: 1px solid #B91C1C;
+  border-radius: 0;
+  color: #B91C1C;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  box-shadow: 3px 3px 0 #B91C1C;
+  animation: shake 0.45s ease;
+}
+
+.errorAlertIcon {
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* success confirmation banner */
+.successAlert {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  padding: 10px 12px;
+  background: #FFFFFF;
+  border: 1px solid #000000;
+  border-radius: 0;
+  color: #000000;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  box-shadow: 3px 3px 0 #000000;
+  animation: fadeIn var(--transition-base) ease;
+}
+
+/* ==================== REMEMBER ME / LINKS ==================== */
+
+.authRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  font-family: var(--font-mono);
+  font-size: 11px;
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  color: #4A4A4A;
+  cursor: pointer;
+  user-select: none;
+  letter-spacing: 0.04em;
+}
+
+.checkbox {
+  width: 14px;
+  height: 14px;
+  border: 1px solid #000000;
+  border-radius: 0;
+  cursor: pointer;
+  accent-color: #000000;
+}
+
+.forgotLink {
+  color: #000000;
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  border-bottom: 1px solid #000000;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.forgotLink:hover {
+  background: #000000;
+  color: #FFFFFF;
+}
+
+/* ==================== PASSWORD STRENGTH ==================== */
+
+.strengthContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: var(--space-xs);
+}
+
+.strengthBar {
+  height: 3px;
+  border-radius: 0;
+  background: #EAEAEA;
+  overflow: hidden;
+  border: 1px solid #000000;
+}
+
+.strengthBarFill {
+  height: 100%;
+  border-radius: 0;
+  background: #000000 !important; /* always black; strength conveyed by width */
+  transition: width 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.strengthLabel {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #000000 !important;
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.strengthSuggestions {
+  margin: 4px 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.strengthSuggestion {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: #4A4A4A;
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.strengthSuggestion::before {
+  content: '>';
+  color: #000000;
+  font-weight: 700;
+  font-size: 11px;
+}
+
+/* ==================== SUBMIT BUTTON SECTION ==================== */
+
+.submitSection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+}
+
+/* ==================== DIVIDER ==================== */
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  color: #888888;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+}
+
+.dividerLine {
+  flex: 1;
+  height: 1px;
+  background: #000000;
+}
+
+/* ==================== SUCCESS STATE ==================== */
+
+.successState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-md);
+  padding: var(--space-sm) 0;
+  font-family: var(--font-mono);
+}
+
+.successIcon {
+  width: 56px;
+  height: 56px;
+  border-radius: 0;
+  background: #000000;
+  color: #FFFFFF;
+  border: 1px solid #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 22px;
+  font-weight: 700;
+  box-shadow: 4px 4px 0 #000000;
+  animation: scaleIn 360ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.successTitle {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  font-weight: 700;
+  color: #000000;
+  letter-spacing: -0.01em;
+}
+
+.successMessage {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: #4A4A4A;
+  line-height: 1.7;
+}

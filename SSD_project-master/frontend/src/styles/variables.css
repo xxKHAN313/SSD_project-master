@@ -1,0 +1,153 @@
+/**
+ * Design system CSS custom properties (variables).
+ *
+ * Monochrome typewriter aesthetic — pure black on pure white, JetBrains Mono.
+ * The previous blue/purple brand palette is replaced with a strictly grayscale
+ * scale; colour accents are provided as semantic alpha-blacks so existing
+ * components keep working through the variable system.
+ */
+
+:root {
+  /* ==================== COLORS — strict grayscale ==================== */
+
+  /* "primary" is just deep black — used for active states and CTAs */
+  --color-primary: #000000;
+  --color-primary-hover: #1A1A1A;
+  --color-primary-light: #F0F0F0;
+  --color-primary-dark: #000000;
+
+  /* semantic state colours kept monochrome — error is the only non-bw allowance,
+     a single warm red so destructive actions remain legible at a glance */
+  --color-success: #000000;
+  --color-success-light: #F4F4F4;
+  --color-trust-green: #000000;
+  --color-error: #B91C1C;
+  --color-error-light: #FEE2E2;
+  --color-warning: #000000;
+  --color-warning-light: #F4F4F4;
+  --color-info: #000000;
+  --color-info-light: #F4F4F4;
+
+  /* neutral surfaces — pure white card on pure white page */
+  --color-bg-main: #FFFFFF;
+  --color-bg-card: #FFFFFF;
+  --color-bg-hover: #F4F4F4;
+  --color-bg-disabled: #EAEAEA;
+  --color-bg-input: #FFFFFF;
+
+  /* sidebar inverts to deep black */
+  --color-bg-sidebar: #000000;
+  --color-bg-sidebar-hover: #1A1A1A;
+  --color-bg-sidebar-active: #FFFFFF;
+
+  /* text — only black-on-white permitted; "muted" is a careful gray ramp */
+  --color-text-primary: #000000;
+  --color-text-secondary: #4A4A4A;
+  --color-text-muted: #8A8A8A;
+  --color-text-inverse: #FFFFFF;
+  --color-text-link: #000000;
+
+  /* borders — hairlines, never colourful */
+  --color-border: #E5E5E5;
+  --color-border-focused: #000000;
+  --color-border-error: #B91C1C;
+  --color-border-strong: #000000;
+
+  /* role badges keep grayscale so admin/manager/employee remain visually
+     distinct without breaking the monochrome palette. Differentiation
+     comes from fill weight, not hue. */
+  --color-role-admin: #000000;
+  --color-role-manager: #4A4A4A;
+  --color-role-employee: #8A8A8A;
+
+  /* online status — small black dot for online; gray for offline */
+  --color-online: #000000;
+  --color-offline: #C7C7C7;
+  --color-danger: #B91C1C;
+
+  /* ==================== SPACING — slightly tighter ==================== */
+  --space-xxs: 2px;
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 14px;
+  --space-lg: 22px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+  --space-3xl: 72px;
+
+  /* ==================== TYPOGRAPHY — typewriter ==================== */
+  /* JetBrains Mono is loaded by global.css; the fallback chain ends in a
+     classic Courier so the page still feels typewriter-y if the font fails. */
+  --font-family: 'JetBrains Mono', 'IBM Plex Mono', 'SFMono-Regular', 'Cascadia Code', 'Consolas', 'Courier New', monospace;
+  --font-mono: 'JetBrains Mono', 'IBM Plex Mono', 'Cascadia Code', 'Consolas', 'Courier New', monospace;
+  --font-display: 'JetBrains Mono', 'IBM Plex Mono', 'Cascadia Code', monospace;
+
+  /* font sizes (slightly tighter — monospace fonts read larger) */
+  --font-size-h1: 28px;
+  --font-size-h2: 22px;
+  --font-size-h3: 18px;
+  --font-size-h4: 16px;
+  --font-size-lg: 15px;
+  --font-size-md: 13px;
+  --font-size-sm: 12px;
+  --font-size-caption: 11px;
+
+  /* font weights — monospace looks best at 400/500/700 */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* line heights — slightly looser for monospace readability */
+  --line-height-h1: 1.15;
+  --line-height-h2: 1.25;
+  --line-height-h3: 1.3;
+  --line-height-h4: 1.35;
+  --line-height-body: 1.6;
+  --line-height-caption: 1.4;
+
+  /* tracking — tighten letters slightly so monospace doesn't feel sparse */
+  --letter-spacing-tight: -0.01em;
+  --letter-spacing-normal: 0;
+  --letter-spacing-wide: 0.04em;
+
+  /* ==================== BORDER RADIUS — flat & sharp ==================== */
+  /* radii are intentionally tiny; a typewriter UI is square, not pillowy. */
+  --radius-xs: 0px;
+  --radius-sm: 0px;
+  --radius-md: 2px;
+  --radius-lg: 2px;
+  --radius-xl: 4px;
+  --radius-2xl: 4px;
+  --radius-full: 9999px;
+
+  /* ==================== SHADOWS — minimal ==================== */
+  --shadow-subtle: 0 0 0 1px rgba(0, 0, 0, 0.06);
+  --shadow-soft: 0 1px 0 rgba(0, 0, 0, 0.08);
+  --shadow-medium: 0 2px 0 rgba(0, 0, 0, 0.1);
+  --shadow-large: 0 4px 0 rgba(0, 0, 0, 0.12);
+  --shadow-extra: 0 8px 0 rgba(0, 0, 0, 0.14);
+  --shadow-focus: 0 0 0 2px #000000;
+  --shadow-error: 0 0 0 2px #B91C1C;
+
+  /* ==================== TRANSITIONS — snappy ==================== */
+  /* monochrome interfaces feel cheap if motion is sluggish */
+  --transition-fast: 100ms cubic-bezier(0.2, 0, 0, 1);
+  --transition-base: 180ms cubic-bezier(0.2, 0, 0, 1);
+  --transition-slow: 320ms cubic-bezier(0.2, 0, 0, 1);
+  --transition-spring: 420ms cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* ==================== LAYOUT ==================== */
+  --sidebar-width: 240px;
+  --sidebar-collapsed-width: 64px;
+  --navbar-height: 56px;
+  --content-max-width: 1280px;
+
+  /* ==================== Z-INDEX ==================== */
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-modal-backdrop: 300;
+  --z-modal: 400;
+  --z-toast: 500;
+  --z-tooltip: 600;
+}

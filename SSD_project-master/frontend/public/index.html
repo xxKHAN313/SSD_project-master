@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#2563EB" />
+    <meta
+      name="description"
+      content="Shield-Chat: A Role-Based Secure Messaging Portal for enterprise communication"
+    />
+    <meta name="robots" content="noindex, nofollow" />
+    <!--
+      Security headers (CSP, X-Frame-Options, X-Content-Type-Options) are
+      delivered authoritatively by the backend as HTTP response headers.
+      ZAP (and the CSP spec itself) flag meta-delivered security headers
+      as non-compliant because they can be bypassed or shadowed. Do not
+      add <meta http-equiv="..."> tags for security controls here.
+    -->
+    <!--
+      Bootstrap the webpack nonce so style-loader-injected <style> tags
+      (and any other dynamic webpack chunks) carry the per-request nonce
+      set by the server. The server replaces __CSP_NONCE__ with a fresh
+      base64 value on each HTML response.
+    -->
+    <script nonce="__CSP_NONCE__">window.__webpack_nonce__ = "__CSP_NONCE__";</script>
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <title>Shield-Chat | Secure Messaging Portal</title>
+  </head>
+  <body>
+    <noscript>
+      <div style="display:flex;align-items:center;justify-content:center;min-height:100vh;font-family:'Segoe UI',sans-serif;background:#F9FAFB;padding:24px;text-align:center;">
+        <div style="background:#fff;padding:48px;border-radius:12px;box-shadow:0 4px 24px rgba(0,0,0,0.08);max-width:480px;">
+          <div style="font-size:48px;margin-bottom:16px;">Shield-Chat</div>
+          <h1 style="color:#111827;font-size:24px;margin:0 0 12px;">JavaScript Required</h1>
+          <p style="color:#6B7280;font-size:14px;line-height:1.6;margin:0;">
+            Shield-Chat requires JavaScript to run. Please enable JavaScript in your browser settings and reload the page to access the secure messaging portal.
+          </p>
+        </div>
+      </div>
+    </noscript>
+    <div id="root"></div>
+  </body>
+</html>
